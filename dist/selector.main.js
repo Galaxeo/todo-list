@@ -15,7 +15,7 @@
   \*************************/
 /***/ (() => {
 
-eval("\n\n//# sourceURL=webpack://todo-list/./src/selector.js?");
+eval("document.addEventListener(\"DOMContentLoaded\", () => {\n  const formEle = document.querySelector(\"div[val]\");\n  const mainEle = document.querySelector(\".main\");\n  document.querySelector(\".createTask\").onclick = (event) => {\n    formEle.classList.toggle('hidden');\n    document.querySelector(\".main\").classList.toggle('blur');\n    event.stopPropagation();\n  }\n  document.querySelector(\".main\").onclick = () => {\n    if (mainEle.classList.contains(\"blur\")) {\n      formEle.classList.toggle('hidden');\n      document.querySelector(\".main\").classList.toggle('blur');\n    } else {\n      // pass\n    }\n  }\n});\n\n\n//# sourceURL=webpack://todo-list/./src/selector.js?");
 
 /***/ })
 

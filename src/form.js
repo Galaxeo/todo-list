@@ -3,6 +3,7 @@ function createForm() {
   const formCont = document.createElement('div');
   formCont.classList.add('formCont');
   formCont.classList.add('hidden');
+  formCont.setAttribute('val', 22);
 
   const form = document.createElement('form');
   form.classList.add('cardForm');
@@ -21,7 +22,7 @@ function createForm() {
   const submitBut = document.createElement('button');
   submitBut.classList.add('submitBut');
   submitBut.innerHTML = "Create task!";
-  submitBut.type = 'button';
+  submitBut.setAttribute('type', 'button');
   form.appendChild(submitBut);
 
   formCont.appendChild(form);
