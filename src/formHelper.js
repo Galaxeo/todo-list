@@ -1,4 +1,4 @@
-function formHelper(name) {
+function formHelper(name, type = 'text') {
   const gridRow = document.createElement('div');
   gridRow.classList.add('gridRow');
 
@@ -8,9 +8,18 @@ function formHelper(name) {
   label.innerHTML = name;
   input.id = name;
   input.name = name;
+  input.placeholder = name;
+  if (type != 'text') {
+    input.onfocus = () => {
+      input.type = type;
+    }
+    input.onblur = () => {
+      input.type = 'text';
+    }
+  }
 
-  gridRow.appendChild(label);
   gridRow.appendChild(input);
+  gridRow.appendChild(label);
 
   return gridRow;
 }

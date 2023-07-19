@@ -2,14 +2,13 @@ import './style.css';
 import createForm from './form.js';
 
 const formEle = createForm();
+const mainEle = document.querySelector(".main");
 
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 let interval = null;
 
-const main = document.querySelector('.main');
-
-//credit to hyperplexed
+// encyrpt word effect, credit to hyperplexed
 document.querySelector("h1").onclick = event => {
   let iteration = 0;
 
@@ -34,8 +33,5 @@ document.querySelector("h1").onclick = event => {
     iteration += 1 / 3;
   }, 30);
 }
-document.querySelector(".createTask").onclick = () => {
-  formEle.classList.toggle('hidden');
-  document.querySelector(".main").classList.toggle('blur');
-}
+
 document.body.appendChild(formEle);
