@@ -1,4 +1,4 @@
-function formHelper(name, type = 'text') {
+function formHelper(name, type = 'text', val) {
   const gridRow = document.createElement('div');
   gridRow.classList.add('gridRow');
 

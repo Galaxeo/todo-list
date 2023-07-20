@@ -1,4 +1,4 @@
-export class Card {
+class Card {
   constructor(task, dueDate, details, project) {
     this.task = task;
     this.dueDate = dueDate;
@@ -6,8 +6,8 @@ export class Card {
     this.project = project;
   }
 }
-function card() {
-  const cardEle = document.createElement('div');
+function card(task, due, detail, project) {
+  const cardEle = new Card(task, due, detail, project);
   return cardEle;
 }
 export default card;
