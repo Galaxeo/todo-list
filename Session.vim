@@ -17,11 +17,12 @@ badd +18 ~/code/todo-list/src/card.js
 badd +27 ~/code/todo-list/src/selector.js
 badd +40 ~/code/todo-list/src/index.js
 badd +28 ~/code/todo-list/src/form.js
-badd +149 ~/code/todo-list/src/style.css
-badd +25 ~/code/todo-list/dist/index.html
+badd +1 ~/code/todo-list/src/style.css
+badd +14 ~/code/todo-list/dist/index.html
+badd +189 ~/code/todo-list/LICENSE
 argglobal
 %argdel
-edit ~/code/todo-list/dist/index.html
+edit ~/code/todo-list/LICENSE
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -38,33 +39,32 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 85 + 85) / 171)
-exe 'vert 2resize ' . ((&columns * 85 + 85) / 171)
+exe 'vert 1resize ' . ((&columns * 60 + 60) / 120)
+exe 'vert 2resize ' . ((&columns * 59 + 60) / 120)
 argglobal
-balt ~/code/todo-list/src/index.js
-let s:l = 14 - ((13 * winheight(0) + 20) / 40)
+balt ~/code/todo-list/dist/index.html
+let s:l = 189 - ((8 * winheight(0) + 14) / 28)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 14
-normal! 028|
+keepjumps 189
+normal! 030|
 wincmd w
 argglobal
-if bufexists(fnamemodify("~/code/todo-list/src/style.css", ":p")) | buffer ~/code/todo-list/src/style.css | else | edit ~/code/todo-list/src/style.css | endif
+if bufexists(fnamemodify("~/code/todo-list/dist/index.html", ":p")) | buffer ~/code/todo-list/dist/index.html | else | edit ~/code/todo-list/dist/index.html | endif
 if &buftype ==# 'terminal'
-  silent file ~/code/todo-list/src/style.css
+  silent file ~/code/todo-list/dist/index.html
 endif
 balt ~/code/todo-list/src/form.js
-let s:l = 150 - ((30 * winheight(0) + 20) / 40)
+let s:l = 20 - ((19 * winheight(0) + 14) / 28)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 150
+keepjumps 20
 normal! 0
 wincmd w
-2wincmd w
-exe 'vert 1resize ' . ((&columns * 85 + 85) / 171)
-exe 'vert 2resize ' . ((&columns * 85 + 85) / 171)
+exe 'vert 1resize ' . ((&columns * 60 + 60) / 120)
+exe 'vert 2resize ' . ((&columns * 59 + 60) / 120)
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
