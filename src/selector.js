@@ -23,6 +23,6 @@ submitBut.onclick = (event) => {
   const taskEntry = formEle.querySelector("input[id='Task']").value;
   const dueEntry = formEle.querySelector("input[id='Due']").value;
   const detailEntry = formEle.querySelector("input[id='Details']").value;
-  const projectEntry = formEle.querySelector("input[id='Project']").value;
-  console.log(card(taskEntry, dueEntry, detailEntry, projectEntry));
+  const cardEle = card(taskEntry, dueEntry, detailEntry);
+  mainEle.appendChild(cardEle);
 }

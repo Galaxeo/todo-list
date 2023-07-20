@@ -13,12 +13,15 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +10 ~/code/todo-list/src/card.js
+badd +18 ~/code/todo-list/src/card.js
 badd +27 ~/code/todo-list/src/selector.js
-badd +7 ~/code/todo-list/src/formHelper.js
+badd +40 ~/code/todo-list/src/index.js
+badd +28 ~/code/todo-list/src/form.js
+badd +149 ~/code/todo-list/src/style.css
+badd +25 ~/code/todo-list/dist/index.html
 argglobal
 %argdel
-edit ~/code/todo-list/src/selector.js
+edit ~/code/todo-list/dist/index.html
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -38,26 +41,28 @@ set winwidth=1
 exe 'vert 1resize ' . ((&columns * 85 + 85) / 171)
 exe 'vert 2resize ' . ((&columns * 85 + 85) / 171)
 argglobal
-balt ~/code/todo-list/src/card.js
-let s:l = 27 - ((26 * winheight(0) + 20) / 40)
+balt ~/code/todo-list/src/index.js
+let s:l = 14 - ((13 * winheight(0) + 20) / 40)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 27
-normal! 016|
+keepjumps 14
+normal! 028|
 wincmd w
 argglobal
-if bufexists(fnamemodify("~/code/todo-list/src/card.js", ":p")) | buffer ~/code/todo-list/src/card.js | else | edit ~/code/todo-list/src/card.js | endif
+if bufexists(fnamemodify("~/code/todo-list/src/style.css", ":p")) | buffer ~/code/todo-list/src/style.css | else | edit ~/code/todo-list/src/style.css | endif
 if &buftype ==# 'terminal'
-  silent file ~/code/todo-list/src/card.js
+  silent file ~/code/todo-list/src/style.css
 endif
-let s:l = 10 - ((9 * winheight(0) + 20) / 40)
+balt ~/code/todo-list/src/form.js
+let s:l = 150 - ((30 * winheight(0) + 20) / 40)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 10
-normal! 023|
+keepjumps 150
+normal! 0
 wincmd w
+2wincmd w
 exe 'vert 1resize ' . ((&columns * 85 + 85) / 171)
 exe 'vert 2resize ' . ((&columns * 85 + 85) / 171)
 tabnext 1

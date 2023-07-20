@@ -16,9 +16,6 @@ function createForm() {
   const detailRow = formHelper('Details');
   form.appendChild(detailRow);
 
-  const projectRow = formHelper('Project');
-  form.appendChild(projectRow);
-
   const submitBut = document.createElement('button');
   submitBut.classList.add('submitBut');
   submitBut.innerHTML = "Create task!";
