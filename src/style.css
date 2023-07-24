@@ -54,7 +54,8 @@
 }
 .header {
   color: #47585C;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -66,23 +67,13 @@
   color: #C8D5BB;
   background-image: linear-gradient(rgba(71, 88, 92, .65), rgba(71, 88, 92, .65));
 }
-.tabs {
-  margin: 10px;
-}
-.tab {
-  padding: 10px;
-  border-radius: 5px;
-  border: 2px solid #47585C;
-  background-image: linear-gradient(rgba(71, 88, 92, .65), rgba(71, 88, 92, .65));
-}
-.tab:hover {
-  border: 2px solid #dbebcc;
-}
+
 
 .createTask {
   padding: 10px;
   border-radius: 10px;
   border: 2px solid #47585C;
+  width: 200px;
   background-image: linear-gradient(rgba(71, 88, 92, .65), rgba(71, 88, 92, .65));
 }
 .createTask:hover {
@@ -155,6 +146,20 @@
 .submitBut:focus{
   outline: 2px solid #C8D5BB;
 }
+
+/* Tabs */
+
+.tab {
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px solid #47585C;
+  background-image: linear-gradient(rgba(71, 88, 92, .65), rgba(71, 88, 92, .65));
+}
+.tab:hover {
+  border: 2px solid #dbebcc;
+}
+
+
 /* Cards */
 .cardCont {
   background-image: linear-gradient(rgba(71, 88, 92, .65), rgba(71, 88, 92, .65));
