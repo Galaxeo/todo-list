@@ -13,6 +13,9 @@ function createForm() {
   const dueRow = formHelper('Due', 'datetime-local');
   form.appendChild(dueRow);
 
+  const projectRow = formHelper('Project');
+  form.appendChild(projectRow);
+
   const detailRow = formHelper('Details');
   form.appendChild(detailRow);
 

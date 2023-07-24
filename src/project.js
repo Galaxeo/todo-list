@@ -9,6 +9,9 @@ class Project {
   getTask() {
     return this.tasks;
   }
+  getName() {
+    return this.name;
+  }
 }
 
 function createProject(name) {
