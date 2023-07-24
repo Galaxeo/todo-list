@@ -13,13 +13,14 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +15 ~/code/todo-list/src/card.js
+badd +25 ~/code/todo-list/src/card.js
 badd +59 ~/code/todo-list/src/selector.js
-badd +7 ~/code/todo-list/src/index.js
-badd +23 ~/code/todo-list/src/form.js
-badd +1 ~/code/todo-list/src/style.css
+badd +39 ~/code/todo-list/src/index.js
+badd +25 ~/code/todo-list/src/form.js
+badd +53 ~/code/todo-list/src/style.css
 badd +1 ~/code/todo-list/dist/index.html
-badd +16 ~/code/todo-list/src/project.js
+badd +18 ~/code/todo-list/src/project.js
+badd +19 ~/code/todo-list/src/formHelper.js
 argglobal
 %argdel
 edit ~/code/todo-list/src/selector.js
@@ -43,26 +44,27 @@ exe 'vert 1resize ' . ((&columns * 85 + 85) / 171)
 exe 'vert 2resize ' . ((&columns * 85 + 85) / 171)
 argglobal
 balt ~/code/todo-list/src/index.js
-let s:l = 60 - ((20 * winheight(0) + 20) / 40)
+let s:l = 59 - ((13 * winheight(0) + 20) / 40)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 60
-normal! 0
+keepjumps 59
+normal! 01|
 wincmd w
 argglobal
-if bufexists(fnamemodify("~/code/todo-list/src/project.js", ":p")) | buffer ~/code/todo-list/src/project.js | else | edit ~/code/todo-list/src/project.js | endif
+if bufexists(fnamemodify("~/code/todo-list/src/style.css", ":p")) | buffer ~/code/todo-list/src/style.css | else | edit ~/code/todo-list/src/style.css | endif
 if &buftype ==# 'terminal'
-  silent file ~/code/todo-list/src/project.js
+  silent file ~/code/todo-list/src/style.css
 endif
-balt ~/code/todo-list/src/card.js
-let s:l = 16 - ((15 * winheight(0) + 20) / 40)
+balt ~/code/todo-list/dist/index.html
+let s:l = 54 - ((25 * winheight(0) + 20) / 40)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 16
+keepjumps 54
 normal! 0
 wincmd w
+2wincmd w
 exe 'vert 1resize ' . ((&columns * 85 + 85) / 171)
 exe 'vert 2resize ' . ((&columns * 85 + 85) / 171)
 tabnext 1
@@ -80,7 +82,6 @@ if filereadable(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
-nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :

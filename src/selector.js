@@ -20,16 +20,19 @@ document.querySelector(".main").onclick = () => {
   }
 };
 
-function checkProjects(arr, entry, task) {
+function checkProjects(arr, projName, task) {
+  if (projName == "") {
+    return true;
+  }
   for (const i in arr) {
-    if (projects[i].name == 'p7' + entry) {
+    if (projects[i].name == 'p7' + projName) {
       projects[i].addTask(task);
       return true; // true means found project
     } else {
       continue;
     }
   }
-  const newProj = createProject('p7' + entry);
+  const newProj = createProject('p7' + projName);
   newProj.addTask(task);
   projects.push(newProj);
   return false; // false means did not find project
@@ -45,22 +48,26 @@ submitBut.onclick = (event) => {
   const projectEntry = formEle.querySelector("input[id='Project']").value;
   const detailEntry = formEle.querySelector("input[id='Details']").value;
 
-  const cardEle = card(taskEntry, dueEntry, projectEntry, detailEntry);
+  const cardEle = card(taskEntry, dueEntry, detailEntry);
 
   // Project Logic
   if (!checkProjects(projects, projectEntry, taskEntry)) {
     const newProjDiv = document.createElement('div');
+    const newProjTitle = document.createElement('h3');
+    newProjTitle.innerHTML = projectEntry;
     newProjDiv.setAttribute('class', 'cardProject');
+    mainEle.appendChild(newProjTitle);
     mainEle.appendChild(newProjDiv);
     newProjDiv.id = 'p7' + projectEntry;
     newProjDiv.appendChild(cardEle);
   } else {
     const existingProj = mainEle.querySelectorAll("div[class='cardProject']");
-    console.log("existing");
+    if (projectEntry == "") {
+      noProj.appendChild(cardEle);
+    }
     for (const i in existingProj) {
       console.log(existingProj[i]);
       if (existingProj[i].id == 'p7' + projectEntry) {
-        console.log('here');
         existingProj[i].appendChild(cardEle);
         break;
       }
