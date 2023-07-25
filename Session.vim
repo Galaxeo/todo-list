@@ -3,7 +3,7 @@ let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-
 let v:this_session=expand("<sfile>:p")
 silent only
 silent tabonly
-cd ~/code/todo-list
+cd ~/code/webpage/todo-list
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
@@ -13,13 +13,12 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +85 ~/code/todo-list/src/selector.js
-badd +37 ~/code/todo-list/src/index.js
-badd +72 ~/code/todo-list/src/style.css
-badd +35 ~/code/todo-list/dist/index.html
+badd +19 ~/code/webpage/todo-list/dist/index.html
+badd +238 ~/code/webpage/todo-list/src/style.css
+badd +90 ~/code/webpage/todo-list/src/selector.js
 argglobal
 %argdel
-edit ~/code/todo-list/dist/index.html
+edit ~/code/webpage/todo-list/dist/index.html
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -39,28 +38,27 @@ set winwidth=1
 exe 'vert 1resize ' . ((&columns * 85 + 85) / 171)
 exe 'vert 2resize ' . ((&columns * 85 + 85) / 171)
 argglobal
-balt ~/code/todo-list/src/style.css
-let s:l = 35 - ((20 * winheight(0) + 20) / 40)
+balt ~/code/webpage/todo-list/src/style.css
+let s:l = 19 - ((18 * winheight(0) + 20) / 40)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 35
-normal! 0
+keepjumps 19
+normal! 041|
 wincmd w
 argglobal
-if bufexists(fnamemodify("~/code/todo-list/src/style.css", ":p")) | buffer ~/code/todo-list/src/style.css | else | edit ~/code/todo-list/src/style.css | endif
+if bufexists(fnamemodify("~/code/webpage/todo-list/src/style.css", ":p")) | buffer ~/code/webpage/todo-list/src/style.css | else | edit ~/code/webpage/todo-list/src/style.css | endif
 if &buftype ==# 'terminal'
-  silent file ~/code/todo-list/src/style.css
+  silent file ~/code/webpage/todo-list/src/style.css
 endif
-balt ~/code/todo-list/src/index.js
-let s:l = 72 - ((20 * winheight(0) + 20) / 40)
+balt ~/code/webpage/todo-list/src/selector.js
+let s:l = 238 - ((23 * winheight(0) + 20) / 40)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 72
-normal! 0
+keepjumps 238
+normal! 029|
 wincmd w
-2wincmd w
 exe 'vert 1resize ' . ((&columns * 85 + 85) / 171)
 exe 'vert 2resize ' . ((&columns * 85 + 85) / 171)
 tabnext 1

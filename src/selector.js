@@ -95,3 +95,13 @@ const sidebarTab = document.getElementById('mySidebar').addEventListener("click"
     };
   }
 });
+// Remove cards logic 
+const cardListener = mainEle.addEventListener("click", (e) => {
+  const target = e.target.closest('.cardCont');
+  if (target) {
+    target.classList.add('deleting');
+    setTimeout(() => {
+      target.remove();
+    }, 150)
+  }
+});
