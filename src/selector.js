@@ -2,7 +2,7 @@ import card from './card.js';
 import createProject from './project.js';
 const formEle = document.querySelector("div[val]");
 const mainEle = document.querySelector(".main");
-const noProj = document.querySelector("#none");
+const noProj = document.querySelector("#p7All");
 const submitBut = document.querySelector("button[class='submitBut']");
 const projects = [createProject('none')];
 
@@ -50,6 +50,7 @@ submitBut.onclick = (event) => {
   const dueEntry = formEle.querySelector("input[id='Due']").value;
   const projectEntry = formEle.querySelector("input[id='Project']").value;
   const detailEntry = formEle.querySelector("input[id='Details']").value;
+  const existingProj = mainEle.querySelectorAll("div[class='cardProject']");
   // Create the task card element
   const cardEle = card(taskEntry, dueEntry, detailEntry);
 
@@ -58,24 +59,20 @@ submitBut.onclick = (event) => {
   // If the project is not found, create a new div for the checkProjects and new tab in sidebar
   if (!checkProjects(projects, projectEntry, taskEntry)) {
     const newProjDiv = document.createElement('div');
-    const newProjTitle = document.createElement('h3');
     const newProjLink = document.createElement('a');
-    newProjTitle.innerHTML = projectEntry;
     newProjLink.innerHTML = projectEntry;
     newProjDiv.setAttribute('class', 'cardProject');
     newProjLink.setAttribute('class', 'sideLink');
     sidebarProjs.appendChild(newProjLink);
-    mainEle.appendChild(newProjTitle);
     mainEle.appendChild(newProjDiv);
     newProjDiv.id = 'p7' + projectEntry;
     newProjDiv.appendChild(cardEle);
   } else {
     // If the project is found, find that project and append the card element to it.
-    const existingProj = mainEle.querySelectorAll("div[class='cardProject']");
     if (projectEntry == "") {
       noProj.appendChild(cardEle);
     }
-    for (const i in existingProj) {
+    for (var i = 0; i < existingProj.length; i++) {
       if (existingProj[i].id == 'p7' + projectEntry) {
         existingProj[i].appendChild(cardEle);
         break;
@@ -84,9 +81,17 @@ submitBut.onclick = (event) => {
   }
 }
 // Sidebar tab Logic
-const sidebarTab = document.querySelectorAll('a[class=sideLink]');
-sidebarTab.forEach(tab => {
-  tab.addEventListener('click', () => {
-    console.log(tab.innerHTML);
-  })
+const sidebarTab = document.getElementById('mySidebar').addEventListener("click", (e) => {
+  // Have to redefine existingProj to have updated list
+  const existingProj = mainEle.querySelectorAll("div.cardProject");
+  const target = e.target.closest(".sideLink");
+  if (target) {
+    console.log(existingProj);
+    for (var i = 0; i < existingProj.length; i++) {
+      existingProj[i].classList.add("hidden");
+      if (existingProj[i].id == 'p7' + target.innerHTML || target.innerHTML == 'All') {
+        existingProj[i].classList.remove("hidden");
+      }
+    };
+  }
 });

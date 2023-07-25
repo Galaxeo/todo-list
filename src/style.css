@@ -75,14 +75,22 @@ a {
 }
 
 .createTask {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 10px;
   border-radius: 10px;
   border: 2px solid #47585C;
-  width: 200px;
+  width: 40px;
+  height: 40px;
   background-image: linear-gradient(rgba(71, 88, 92, .65), rgba(71, 88, 92, .65));
 }
 .createTask:hover {
   border: 2px solid #dbebcc;
+}
+.createTask h2 {
+  color: #C8D5BB;
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
 }
 
 .blur {
@@ -232,4 +240,7 @@ a {
   justify-content: center;
   flex-wrap: wrap;
   gap: 15px;
+}
+.hidden {
+  display: none;
 }
