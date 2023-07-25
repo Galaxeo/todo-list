@@ -5,6 +5,8 @@ const mainEle = document.querySelector(".main");
 const noProj = document.querySelector("#p7All");
 const submitBut = document.querySelector("button[class='submitBut']");
 const projects = [createProject('none')];
+const sidebarProjs = document.querySelector('.projects');
+const sidebar = document.getElementById('mySidebar');
 
 document.querySelector(".createTask").onclick = (event) => {
   formEle.classList.toggle('hidden');
@@ -38,7 +40,6 @@ function checkProjects(arr, projName, task) {
   return false; // false means did not find project
 }
 
-const sidebarProjs = document.querySelector('.projects');
 
 submitBut.onclick = (event) => {
   // Blur background behind the form
@@ -81,16 +82,18 @@ submitBut.onclick = (event) => {
   }
 }
 // Sidebar tab Logic
-const sidebarTab = document.getElementById('mySidebar').addEventListener("click", (e) => {
+const sidebarTab = sidebar.addEventListener("click", (e) => {
   // Have to redefine existingProj to have updated list
   const existingProj = mainEle.querySelectorAll("div.cardProject");
   const target = e.target.closest(".sideLink");
   if (target) {
-    console.log(existingProj);
     for (var i = 0; i < existingProj.length; i++) {
       existingProj[i].classList.add("hidden");
       if (existingProj[i].id == 'p7' + target.innerHTML || target.innerHTML == 'All') {
-        existingProj[i].classList.remove("hidden");
+        const proj = existingProj[i];
+        setTimeout(() => {
+          proj.classList.remove("hidden")
+        }, 150);
       }
     };
   }

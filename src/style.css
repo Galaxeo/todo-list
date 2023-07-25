@@ -114,9 +114,7 @@ a {
 .blur {
   filter: blur(4px);
 }
-.hidden {
-  display: none;
-}
+
 /* Form Styling */
 .formCont { /*Form container*/
   position: absolute;
@@ -178,11 +176,14 @@ a {
   outline: 2px solid #C8D5BB;
 }
 /* Sidebar */
-.openbtn{
-  display: grid;
+.openCont {
   position: absolute;
   top: 0;
   left: 0;
+}
+.openbtn{
+  position: fixed;
+  display: grid;
   background-image: linear-gradient(rgba(71, 88, 92, .65), rgba(71, 88, 92, .65));
   border-radius: 10px;
   border: 2px solid #47585C;
@@ -247,7 +248,7 @@ a {
   animation: silo-fade 0.2s;
 }
 .deleting {
-  animation: silo-fade-away 0.2s;
+  animation: silo-fade-away 0.3s;
 }
 .cardCont *{
   background-image: linear-gradient(rgba(0, 0, 0, .0), rgba(0, 0, 0, 0));
@@ -269,6 +270,9 @@ a {
   flex-wrap: wrap;
   gap: 15px;
 }
+
+/* Hidden at the bottom for display priority */
 .hidden {
+  animation: silo-fade-away 0.2s;
   display: none;
 }

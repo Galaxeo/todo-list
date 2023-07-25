@@ -13,9 +13,11 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +19 ~/code/webpage/todo-list/dist/index.html
+badd +29 ~/code/webpage/todo-list/dist/index.html
 badd +238 ~/code/webpage/todo-list/src/style.css
-badd +90 ~/code/webpage/todo-list/src/selector.js
+badd +36 ~/code/webpage/todo-list/src/selector.js
+badd +41 ~/code/webpage/todo-list/src/index.js
+badd +1 ~/code/webpage/todo-list/src/form.js
 argglobal
 %argdel
 edit ~/code/webpage/todo-list/dist/index.html
@@ -39,26 +41,27 @@ exe 'vert 1resize ' . ((&columns * 85 + 85) / 171)
 exe 'vert 2resize ' . ((&columns * 85 + 85) / 171)
 argglobal
 balt ~/code/webpage/todo-list/src/style.css
-let s:l = 19 - ((18 * winheight(0) + 20) / 40)
+let s:l = 29 - ((19 * winheight(0) + 20) / 40)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 19
-normal! 041|
+keepjumps 29
+normal! 01|
 wincmd w
 argglobal
-if bufexists(fnamemodify("~/code/webpage/todo-list/src/style.css", ":p")) | buffer ~/code/webpage/todo-list/src/style.css | else | edit ~/code/webpage/todo-list/src/style.css | endif
+if bufexists(fnamemodify("~/code/webpage/todo-list/src/selector.js", ":p")) | buffer ~/code/webpage/todo-list/src/selector.js | else | edit ~/code/webpage/todo-list/src/selector.js | endif
 if &buftype ==# 'terminal'
-  silent file ~/code/webpage/todo-list/src/style.css
+  silent file ~/code/webpage/todo-list/src/selector.js
 endif
-balt ~/code/webpage/todo-list/src/selector.js
-let s:l = 238 - ((23 * winheight(0) + 20) / 40)
+balt ~/code/webpage/todo-list/src/index.js
+let s:l = 24 - ((23 * winheight(0) + 20) / 40)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 238
-normal! 029|
+keepjumps 24
+normal! 0
 wincmd w
+2wincmd w
 exe 'vert 1resize ' . ((&columns * 85 + 85) / 171)
 exe 'vert 2resize ' . ((&columns * 85 + 85) / 171)
 tabnext 1
@@ -76,7 +79,6 @@ if filereadable(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
-nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :
