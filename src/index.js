@@ -2,7 +2,7 @@ import './style.css';
 import createForm from './form.js';
 
 const formEle = createForm();
-const mainEle = document.querySelector(".main");
+document.body.appendChild(formEle);
 
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -56,7 +56,3 @@ sidebarBtn.addEventListener("click", () => {
 
 const closebtn = document.querySelector(".closebtn");
 closebtn.addEventListener("click", closeNav);
-
-
-document.body.appendChild(formEle);
-
