@@ -66,7 +66,6 @@ submitBut.onclick = (event) => {
       noProj.appendChild(cardEle);
     }
     for (const i in existingProj) {
-      console.log(existingProj[i]);
       if (existingProj[i].id == 'p7' + projectEntry) {
         existingProj[i].appendChild(cardEle);
         break;

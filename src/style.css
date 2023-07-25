@@ -6,6 +6,9 @@
   background-attachment: fixed;
   font-family: 'Noto Sans JP', sans-serif;
 }
+a {
+  text-decoration: none;
+}
 /* Animation from Silo Creativo */
 @-webkit-keyframes silo-fade {
     0% {
@@ -46,12 +49,15 @@
     }
 }
 .main {
+  position: relative;
   height: 90vh;
   width: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: 0.5s;
 }
+
 .header {
   color: #47585C;
   display: flex;
@@ -67,7 +73,6 @@
   color: #C8D5BB;
   background-image: linear-gradient(rgba(71, 88, 92, .65), rgba(71, 88, 92, .65));
 }
-
 
 .createTask {
   padding: 10px;
@@ -146,19 +151,62 @@
 .submitBut:focus{
   outline: 2px solid #C8D5BB;
 }
-
-/* Tabs */
-
-.tab {
-  padding: 10px;
-  border-radius: 5px;
-  border: 2px solid #47585C;
+/* Sidebar */
+.openbtn{
+  display: grid;
+  position: absolute;
+  top: 0;
+  left: 0;
   background-image: linear-gradient(rgba(71, 88, 92, .65), rgba(71, 88, 92, .65));
+  border-radius: 10px;
+  border: 2px solid #47585C;
+  width: 50px;
+  height: 50px;
 }
-.tab:hover {
+.openbtn:hover {
   border: 2px solid #dbebcc;
 }
-
+.openbtn h1 {
+  margin: 0;
+  padding-bottom: 10px;
+  color: #C8D5BB;
+  background-image: linear-gradient(rgba(71, 88, 92, 0), rgba(71, 88, 92, 0));
+}
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  background-image: linear-gradient(rgba(71, 88, 92, 1), rgba(71, 88, 92, 1));
+  padding-top: 60px;
+  transition: 0.5s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.sidebar > *{
+  margin: auto;
+}
+.sidebar > * > * {
+  white-space: nowrap;
+  background-image: linear-gradient(rgba(71, 88, 92, 1), rgba(71, 88, 92, 1));
+  color: #C8D5BB;
+}
+.sidebar > * > *:hover {
+  color: white;
+  transition: 0.3s;
+}
+.sideLink {
+  display: block;
+  padding: 10px;
+  font-size: 25px;
+}
+.sideLink > * {
+  background-image: linear-gradient(rgba(71, 88, 92, 1), rgba(71, 88, 92, 1));
+}
 
 /* Cards */
 .cardCont {

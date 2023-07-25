@@ -9,7 +9,7 @@ const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 let interval = null;
 
 // encyrpt word effect, credit to hyperplexed
-document.querySelector("h1").onclick = event => {
+document.querySelector(".headerText").onclick = event => {
   let iteration = 0;
 
   clearInterval(interval);
@@ -33,8 +33,30 @@ document.querySelector("h1").onclick = event => {
     iteration += 1 / 3;
   }, 30);
 }
+function openNav() {
+  document.getElementById("mySidebar").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+};
+
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("main").style.marginLeft = "0";
+};
+//
+const openbtn = document.querySelector(".openbtn");
+const sidebarBtn = document.getElementById("sidebarBtn");
+sidebarBtn.addEventListener("click", () => {
+  if (sidebarBtn.classList.contains('closebtn')) {
+    closeNav();
+  } else {
+    openNav();
+  }
+  sidebarBtn.classList.toggle('closebtn');
+});
+
+const closebtn = document.querySelector(".closebtn");
+closebtn.addEventListener("click", closeNav);
+
 
 document.body.appendChild(formEle);
-
-// Cards Menu
 

@@ -4,25 +4,33 @@
 <head>
   <meta charset="utf-8" />
   <title>To-do List</title>
+  <script src="https://kit.fontawesome.com/c2ffd7d65c.js" crossorigin="anonymous"></script>
   <script src="selector.main.js" defer></script>
 </head>
 
 <body>
   <!-- the idea here is to have a projects menu, then at the bottom have
 the contact and the source code links (footer stuff)-->
-  <!-- <div class="sidebar"> -->
-  <!--   <a href="javascript:void(0)" class="closebtn"></a> -->
-  <!--   <a href=""></a> -->
-  <!--   <a href=""></a> -->
-  <!--   <a href=""></a> -->
-  <!-- </div> -->
-  <div class="main">
+  <div class="sidebar" id="mySidebar">
+    <div class="projects">
+      <a class="sideLink">[]</a>
+    </div>
+    <div class="contact">
+      <a href="javascript:void(0)" class="sideLink">
+        <i class="fa-regular fa-envelope"></i> Contact Me!
+      </a>
+      <a href="https://github.com/galaxeo/todo-list" class="sideLink">
+        <i class="fa-brands fa-github"></i> Source Code
+      </a>
+    </div>
+  </div>
+  <div id="main" class="main">
+    <button type="button" class="openbtn" id="sidebarBtn">
+      <h1>☰</h1>
+    </button>
     <div class="header">
       <h1 class="headerText" data-value="TO-DO LIST">TO-DO LIST</h1>
       <button type="button" class="createTask">Create new task?</button>
-    </div>
-    <div class="tabs">
-      <button type="button" class="tab">None</button>
     </div>
     <div class="cardProject" id="none">
       <div class="cardCont">
