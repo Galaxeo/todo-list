@@ -261,6 +261,10 @@ a {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.cardCont > .cardDue {
+  overflow: visible;
+  white-space: pre-wrap;
+}
 /* Projects */
 .cardProject {
   margin: 15px;

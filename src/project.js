@@ -6,6 +6,16 @@ class Project {
   addTask(task) {
     this.tasks.push(task);
   }
+  getTasks() {
+    return this.tasks;
+  }
+  removeTask(taskID) {
+    for (var i = 0; i < this.tasks.length; i++) {
+      if (this.tasks[i].task == taskID) {
+        this.tasks.splice(i, 1);
+      }
+    }
+  }
   getTask() {
     return this.tasks;
   }

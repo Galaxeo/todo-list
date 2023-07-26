@@ -13,14 +13,16 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +29 ~/code/webpage/todo-list/dist/index.html
-badd +238 ~/code/webpage/todo-list/src/style.css
-badd +36 ~/code/webpage/todo-list/src/selector.js
+badd +1 ~/code/webpage/todo-list/dist/index.html
+badd +266 ~/code/webpage/todo-list/src/style.css
+badd +108 ~/code/webpage/todo-list/src/selector.js
 badd +41 ~/code/webpage/todo-list/src/index.js
-badd +1 ~/code/webpage/todo-list/src/form.js
+badd +18 ~/code/webpage/todo-list/src/form.js
+badd +18 ~/code/webpage/todo-list/src/card.js
+badd +16 ~/code/webpage/todo-list/src/project.js
 argglobal
 %argdel
-edit ~/code/webpage/todo-list/dist/index.html
+edit ~/code/webpage/todo-list/src/selector.js
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -40,28 +42,27 @@ set winwidth=1
 exe 'vert 1resize ' . ((&columns * 85 + 85) / 171)
 exe 'vert 2resize ' . ((&columns * 85 + 85) / 171)
 argglobal
-balt ~/code/webpage/todo-list/src/style.css
-let s:l = 29 - ((19 * winheight(0) + 20) / 40)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 29
-normal! 01|
-wincmd w
-argglobal
-if bufexists(fnamemodify("~/code/webpage/todo-list/src/selector.js", ":p")) | buffer ~/code/webpage/todo-list/src/selector.js | else | edit ~/code/webpage/todo-list/src/selector.js | endif
-if &buftype ==# 'terminal'
-  silent file ~/code/webpage/todo-list/src/selector.js
-endif
 balt ~/code/webpage/todo-list/src/index.js
-let s:l = 24 - ((23 * winheight(0) + 20) / 40)
+let s:l = 85 - ((19 * winheight(0) + 20) / 40)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 24
+keepjumps 85
 normal! 0
 wincmd w
-2wincmd w
+argglobal
+if bufexists(fnamemodify("~/code/webpage/todo-list/src/style.css", ":p")) | buffer ~/code/webpage/todo-list/src/style.css | else | edit ~/code/webpage/todo-list/src/style.css | endif
+if &buftype ==# 'terminal'
+  silent file ~/code/webpage/todo-list/src/style.css
+endif
+balt ~/code/webpage/todo-list/dist/index.html
+let s:l = 266 - ((34 * winheight(0) + 20) / 40)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 266
+normal! 01|
+wincmd w
 exe 'vert 1resize ' . ((&columns * 85 + 85) / 171)
 exe 'vert 2resize ' . ((&columns * 85 + 85) / 171)
 tabnext 1

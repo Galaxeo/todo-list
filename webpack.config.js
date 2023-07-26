@@ -5,6 +5,7 @@ module.exports = {
   entry: {
     index: './src/index.js',
     selector: './src/selector.js',
+    localStorage: './src/localStorage.js',
   },
   output: {
     filename: '[name].main.js',
