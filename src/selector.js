@@ -81,6 +81,8 @@ submitBut.onclick = (event) => {
       }
     }
   }
+  let projectsStr = JSON.stringify(projects);
+  localStorage.setItem("projects", projectsStr);
 }
 // Sidebar tab Logic
 const sidebarTab = sidebar.addEventListener("click", (e) => {
@@ -114,6 +116,7 @@ const cardListener = mainEle.addEventListener("click", (e) => {
       target.remove();
     }, 150)
   }
+  let projectsStr = JSON.stringify(projects);
+  localStorage.setItem("projects", projectsStr);
 });
 
-console.log(JSON.stringify(projects));

@@ -8,6 +8,7 @@ const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 let interval = null;
 
+
 // encyrpt word effect, credit to hyperplexed
 document.querySelector(".headerText").onclick = event => {
   let iteration = 0;

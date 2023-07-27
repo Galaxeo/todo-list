@@ -13,13 +13,14 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +1 ~/code/webpage/todo-list/dist/index.html
+badd +16 ~/code/webpage/todo-list/dist/index.html
 badd +266 ~/code/webpage/todo-list/src/style.css
-badd +108 ~/code/webpage/todo-list/src/selector.js
-badd +41 ~/code/webpage/todo-list/src/index.js
+badd +68 ~/code/webpage/todo-list/src/selector.js
+badd +17 ~/code/webpage/todo-list/src/index.js
 badd +18 ~/code/webpage/todo-list/src/form.js
 badd +18 ~/code/webpage/todo-list/src/card.js
 badd +16 ~/code/webpage/todo-list/src/project.js
+badd +24 ~/code/webpage/todo-list/src/localStorage.js
 argglobal
 %argdel
 edit ~/code/webpage/todo-list/src/selector.js
@@ -42,27 +43,28 @@ set winwidth=1
 exe 'vert 1resize ' . ((&columns * 85 + 85) / 171)
 exe 'vert 2resize ' . ((&columns * 85 + 85) / 171)
 argglobal
-balt ~/code/webpage/todo-list/src/index.js
-let s:l = 85 - ((19 * winheight(0) + 20) / 40)
+balt ~/code/webpage/todo-list/dist/index.html
+let s:l = 72 - ((34 * winheight(0) + 20) / 40)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 85
-normal! 0
+keepjumps 72
+normal! 029|
 wincmd w
 argglobal
-if bufexists(fnamemodify("~/code/webpage/todo-list/src/style.css", ":p")) | buffer ~/code/webpage/todo-list/src/style.css | else | edit ~/code/webpage/todo-list/src/style.css | endif
+if bufexists(fnamemodify("~/code/webpage/todo-list/src/localStorage.js", ":p")) | buffer ~/code/webpage/todo-list/src/localStorage.js | else | edit ~/code/webpage/todo-list/src/localStorage.js | endif
 if &buftype ==# 'terminal'
-  silent file ~/code/webpage/todo-list/src/style.css
+  silent file ~/code/webpage/todo-list/src/localStorage.js
 endif
-balt ~/code/webpage/todo-list/dist/index.html
-let s:l = 266 - ((34 * winheight(0) + 20) / 40)
+balt ~/code/webpage/todo-list/src/project.js
+let s:l = 31 - ((30 * winheight(0) + 20) / 40)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 266
-normal! 01|
+keepjumps 31
+normal! 0
 wincmd w
+2wincmd w
 exe 'vert 1resize ' . ((&columns * 85 + 85) / 171)
 exe 'vert 2resize ' . ((&columns * 85 + 85) / 171)
 tabnext 1
@@ -80,6 +82,7 @@ if filereadable(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
+nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :
