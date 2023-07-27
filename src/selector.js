@@ -1,13 +1,17 @@
 import moment from 'moment';
 import card from './card.js';
-import createProject from './project.js';
+import { createProject, addTask, removeTask } from './project.js';
 const formEle = document.querySelector("div[val]");
 const mainEle = document.querySelector(".main");
-const noProj = document.querySelector("#p7All");
+const noProj = document.querySelector("#p7None");
 const submitBut = document.querySelector("button[class='submitBut']");
-const projects = [createProject('none')];
+var projects = [createProject('p7None')];
 const sidebarProjs = document.querySelector('.projects');
 const sidebar = document.getElementById('mySidebar');
+
+if (localStorage.getItem('projects') != null) {
+  projects = JSON.parse(localStorage.getItem('projects'));
+}
 
 document.querySelector(".createTask").onclick = (event) => {
   formEle.classList.toggle('hidden');
@@ -24,19 +28,20 @@ document.querySelector(".main").onclick = () => {
 };
 
 function checkProjects(arr, projName, task) {
-  if (projName == "") {
+  if (projName == "" || projName == "None") {
+    addTask(projects[0], task);
     return true;
   }
   for (var i = 0; i < projects.length; i++) {
     if (projects[i].name == 'p7' + projName) {
-      projects[i].addTask(task);
+      addTask(projects[i], task);
       return true; // true means found project
     } else {
       continue;
     }
   }
   const newProj = createProject('p7' + projName);
-  newProj.addTask(task);
+  addTask(newProj, task);
   projects.push(newProj);
   return false; // false means did not find project
 }
@@ -108,7 +113,7 @@ const cardListener = mainEle.addEventListener("click", (e) => {
   if (target) {
     for (var i = 0; i < projects.length; i++) {
       if (projects[i].name == target.parentNode.id) {
-        projects[i].removeTask(target.id);
+        removeTask(projects[i], target.id);
       }
     }
     target.classList.add('deleting');
@@ -119,4 +124,3 @@ const cardListener = mainEle.addEventListener("click", (e) => {
   let projectsStr = JSON.stringify(projects);
   localStorage.setItem("projects", projectsStr);
 });
-

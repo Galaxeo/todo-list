@@ -13,14 +13,12 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +16 ~/code/webpage/todo-list/dist/index.html
-badd +266 ~/code/webpage/todo-list/src/style.css
-badd +68 ~/code/webpage/todo-list/src/selector.js
-badd +17 ~/code/webpage/todo-list/src/index.js
-badd +18 ~/code/webpage/todo-list/src/form.js
-badd +18 ~/code/webpage/todo-list/src/card.js
-badd +16 ~/code/webpage/todo-list/src/project.js
-badd +24 ~/code/webpage/todo-list/src/localStorage.js
+badd +25 ~/code/webpage/todo-list/dist/index.html
+badd +9 ~/code/webpage/todo-list/src/selector.js
+badd +44 ~/code/webpage/todo-list/src/index.js
+badd +27 ~/code/webpage/todo-list/src/card.js
+badd +22 ~/code/webpage/todo-list/src/project.js
+badd +26 ~/code/webpage/todo-list/src/localStorage.js
 argglobal
 %argdel
 edit ~/code/webpage/todo-list/src/selector.js
@@ -40,33 +38,31 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 85 + 85) / 171)
-exe 'vert 2resize ' . ((&columns * 85 + 85) / 171)
+wincmd =
 argglobal
 balt ~/code/webpage/todo-list/dist/index.html
-let s:l = 72 - ((34 * winheight(0) + 20) / 40)
+let s:l = 11 - ((10 * winheight(0) + 20) / 40)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 72
-normal! 029|
-wincmd w
-argglobal
-if bufexists(fnamemodify("~/code/webpage/todo-list/src/localStorage.js", ":p")) | buffer ~/code/webpage/todo-list/src/localStorage.js | else | edit ~/code/webpage/todo-list/src/localStorage.js | endif
-if &buftype ==# 'terminal'
-  silent file ~/code/webpage/todo-list/src/localStorage.js
-endif
-balt ~/code/webpage/todo-list/src/project.js
-let s:l = 31 - ((30 * winheight(0) + 20) / 40)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 31
+keepjumps 11
 normal! 0
 wincmd w
+argglobal
+if bufexists(fnamemodify("~/code/webpage/todo-list/src/project.js", ":p")) | buffer ~/code/webpage/todo-list/src/project.js | else | edit ~/code/webpage/todo-list/src/project.js | endif
+if &buftype ==# 'terminal'
+  silent file ~/code/webpage/todo-list/src/project.js
+endif
+balt ~/code/webpage/todo-list/src/localStorage.js
+let s:l = 22 - ((21 * winheight(0) + 20) / 40)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 22
+normal! 017|
+wincmd w
 2wincmd w
-exe 'vert 1resize ' . ((&columns * 85 + 85) / 171)
-exe 'vert 2resize ' . ((&columns * 85 + 85) / 171)
+wincmd =
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
@@ -82,7 +78,6 @@ if filereadable(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
-nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :

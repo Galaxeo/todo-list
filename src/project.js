@@ -3,19 +3,7 @@ class Project {
     this.name = name;
     this.tasks = [];
   }
-  addTask(task) {
-    this.tasks.push(task);
-  }
-  getTasks() {
-    return this.tasks;
-  }
-  removeTask(taskID) {
-    for (var i = 0; i < this.tasks.length; i++) {
-      if (this.tasks[i].task == taskID) {
-        this.tasks.splice(i, 1);
-      }
-    }
-  }
+
   getTask() {
     return this.tasks;
   }
@@ -24,7 +12,17 @@ class Project {
   }
 }
 
-function createProject(name) {
+export function createProject(name) {
   return new Project(name);
+}
+export function addTask(project, task) {
+  project.tasks.push(task);
+}
+export function removeTask(project, taskID) {
+  for (var i = 1; i < project.tasks.length; i++) {
+    if (project.tasks[i].task.replace(/\s/g, "") == taskID) {
+      project.tasks.splice(i, 1);
+    }
+  }
 }
 export default createProject;

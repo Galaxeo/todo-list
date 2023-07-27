@@ -54,6 +54,3 @@ sidebarBtn.addEventListener("click", () => {
   }
   sidebarBtn.classList.toggle('closebtn');
 });
-
-const closebtn = document.querySelector(".closebtn");
-closebtn.addEventListener("click", closeNav);
