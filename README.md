@@ -9,5 +9,13 @@ Tasks are created utilizing the '+' button to pull up a form, in which inputs ge
 
 ## Features
 - Fully animated
+- View the short details of the todo-list tasks
+- Dynamically creates tasks and custom project folders through one form
 - Save the todo-list items locally through localStorage (clearing cache will remove this)
-- Simple click to remove tasks
+- Semi-responsive layout (note: sidebar & tasks remain same size across devices & screen sizes)
+
+## Future features to implement
+- Menu of full details of card by clicking on task rather than simple removal
+- Cloud storage
+- Improved styling (mobile-friendly, fully responsive layout)
+- Due date notifications

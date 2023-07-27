@@ -13,17 +13,17 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +2 ~/code/webpage/todo-list/README.md
+badd +15 ~/code/webpage/todo-list/README.md
 argglobal
 %argdel
 edit ~/code/webpage/todo-list/README.md
 argglobal
-let s:l = 2 - ((1 * winheight(0) + 14) / 28)
+let s:l = 15 - ((14 * winheight(0) + 14) / 28)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 2
-normal! 011|
+keepjumps 15
+normal! 056|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
